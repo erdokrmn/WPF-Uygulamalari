@@ -1,0 +1,34 @@
+﻿<Window x:Class="ExcelDosyasınaKayıtYapanKronometre.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExcelDosyasınaKayıtYapanKronometre"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel >
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock x:Name="tbSüre" Text="Süre : 0 " TextAlignment="Center" Margin="5" />
+                
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="btnBaslat" Content="Başlat" Margin="5" Width="80" Click="btnBaslat_Click" />
+                <Button x:Name="btnTur" Content="Tur" Margin="5" Width="80" Click="btnTur_Click" />
+                <Button x:Name="btnKaydet" Content="Excel'e Kayıt" Margin="5" Width="80" Click="btnKaydet_Click" />
+            </StackPanel>
+            <ListView x:Name="lv" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="False"  >
+                <ListView.View>
+                    <GridView AllowsColumnReorder="true" ColumnHeaderToolTip="Employee Information">
+                        <GridViewColumn  Header="Tur" Width="100" DisplayMemberBinding="{Binding Tur}"/>
+                        <GridViewColumn  Header="Süre" Width="100" DisplayMemberBinding="{Binding Path=Süre}"/>
+                        <GridViewColumn  Header="Tarih" Width="100" DisplayMemberBinding="{Binding Path=Tarih}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        
+    </Grid>
+</Window>
