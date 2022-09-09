@@ -1,21 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Threading;
-
+using System.Windows.Forms;
+using SpreadsheetLight;
+using Microsoft.Win32;
+using System.IO;
 
 namespace ExcelDosyasınaKayıtYapanKronometre
 {
@@ -24,26 +13,21 @@ namespace ExcelDosyasınaKayıtYapanKronometre
     /// </summary>
     public partial class MainWindow : Window
     {
-        int durum = 0;
-        private DispatcherTimer tmrSalise = new DispatcherTimer(DispatcherPriority.Normal);
-        private int saniye, dakika, saat, salise = 0,tur=0;
-        
+        Timer tmrSalise = new Timer();
+        string süre;
+        bool tarih_ = false;
+        int saniye, dakika, saat, salise = 0, tur = 0, durum = 0;
         DateTime tarih;
-
-        private List<Veriler> veriler=new List<Veriler>();
-
+        List<Veriler> veriler = new List<Veriler>();
 
         public MainWindow()
         {
             InitializeComponent();
-            
             tarih = DateTime.Now;
-            tmrSalise.Tick += new EventHandler(TmrSalise_Tick);
-            tmrSalise.Interval = new TimeSpan(0, 0, 0, 0, 1);
-
-
+            tmrSalise.Tick += TmrSalise_Tick;
+            tmrSalise.Interval = 1;
         }
-
+       
         private void TmrSalise_Tick(object sender, EventArgs e)
         {
             
@@ -68,20 +52,19 @@ namespace ExcelDosyasınaKayıtYapanKronometre
                 
 
             }
-            tbSüre.Text = saat.ToString() + " : "+ dakika.ToString() + " : "+ saniye.ToString() + " : " + salise.ToString();
+
+            tbSüre.Text = saat.ToString() + " : " + dakika.ToString() + " : " + saniye.ToString() + " : " + salise.ToString();
             
         }
         private void btnBaslat_Click(object sender, RoutedEventArgs e)
         {
-            string süre;
-            süre = tbSüre.Text;           
+            
+            süre = tbSüre.Text;         
             if (durum==0)
             {
                 btnBaslat.Content = "Durdur";
                 durum = 1;
                 tmrSalise.Start();
-               
-
             }
             else
             {
@@ -92,9 +75,6 @@ namespace ExcelDosyasınaKayıtYapanKronometre
                 durum = 0;
             }
         }
-
-       
-
         private void btnTur_Click(object sender, RoutedEventArgs e)
         {
             lv.ItemsSource = null;
@@ -104,10 +84,54 @@ namespace ExcelDosyasınaKayıtYapanKronometre
             }
             
         }
-
+        public void CreateFile(string path)
+        {
+                
+        }
         private void btnKaydet_Click(object sender, RoutedEventArgs e)
         {
+            //Microsoft.Win32.SaveFileDialog saveFile = new Microsoft.Win32.SaveFileDialog();
+            //saveFile.DefaultExt = "xlsx";
+            //if (saveFile.ShowDialog() == true)
+            //{
+            //    CreateFile(saveFile.FileName);
+            //}
+            if (lv.Items.Count > 0)
+            {
+                SLDocument exc = new SLDocument();
+                SLStyle st = exc.CreateStyle();
+                st.SetFontBold(true);
+                exc.SetCellValue("A1", "Tur");
+                exc.SetCellStyle("A1", st);
+                exc.SetCellValue("B1", "Geçen Süre");
+                exc.SetCellStyle("B1", st);
+                exc.SetCellValue("C1", "Tarih");
+                exc.SetCellStyle("C1", st);
+                int ex_sira = 2;
+                foreach (Veriler itemRow in lv.Items)
+                {
+                    string tur = itemRow.Tur.ToString();
+                    string süre = itemRow.Süre;
+                    string tarih = itemRow.Tarih;
 
+                        exc.SetCellValue("A" + ex_sira, tur);
+                        exc.SetCellValue("B" + ex_sira, süre);
+                        exc.SetCellValue("C" + ex_sira, tarih);
+                        ex_sira++;
+                    
+                }
+                if (File.Exists(System.AppDomain.CurrentDomain.BaseDirectory + "\\CalıstığımSaatler.xlsx"))
+                {
+
+                }
+
+                    FolderBrowserDialog fbd = new FolderBrowserDialog();
+                DialogResult result = fbd.ShowDialog();
+                string a = fbd.SelectedPath + "\\CalıstığımSaatler.xlsx";
+                exc.SaveAs(a);
+                System.Windows.MessageBox.Show("Dosyanız " + a + " olarak kayıt edildi.");
+
+            }
         }
     }
 }

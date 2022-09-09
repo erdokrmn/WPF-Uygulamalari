@@ -19,3 +19,11 @@ C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre
 C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\obj\Debug\ExcelDosyasınaKayıtYapanKronometre.csproj.CopyComplete
 C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\obj\Debug\ExcelDosyasınaKayıtYapanKronometre.exe
 C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\obj\Debug\ExcelDosyasınaKayıtYapanKronometre.pdb
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\SpreadsheetLight.dll
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\System.Drawing.Common.dll
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\System.IO.Packaging.dll
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\SpreadsheetLight.xml
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\bin\Debug\System.IO.Packaging.xml
+C:\Users\erdo\Documents\C--WPF-Uygulamalar-\ExcelDosyasınaKayıtYapanKronometre\ExcelDosyasınaKayıtYapanKronometre\obj\Debug\ExcelDosyasınaKayıtYapanKronometre.csproj.ResolveComReference.cache
